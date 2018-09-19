@@ -22,7 +22,7 @@ Rich Sutton的强化学习，有能力者请阅读英文原版。
     - [Chapter 13: Policy Gradient Methods](chapter/chapter13.md)
 
 - Part III
-    - [Chapter 14: Psychology](chapter/chaper14.md)
+    - [Chapter 14: Psychology](chapter/chapter14.md)
     - [Chapter 15: Neuroscience](chapter/chapter15.md)
     - [Chapter 16: Applications and Case Studies](chapter/chapter16.md)
 

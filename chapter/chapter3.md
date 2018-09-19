@@ -3,7 +3,7 @@
 ## 3.1 The Agent–Environment Interface(个体和环境接口)
 有限马尔科夫决策过程是一种交互式的问题导向学习问题。包括个体和环境，个体可以学习制作决定，所有个体之外的因素包含在环境中。
 
-![mdp](/Users/han/Documents/book/rl/reinforcement-learning-notes/img/mdp.png)
+![mdp](../img/mdp.png)
 
 上述为马尔科夫随机过程的循环图，如果展开为一个时间序列，可以为：S0,A0,R1,S1,A1,R2,S2,A2,R3,...
 
@@ -76,7 +76,7 @@ $$
 
 这个公式也称作值函数$v_{\pi}$的贝尔曼方程，可以看做所有$s,a,s^{'}$组合的概率对下一个状态下值函数的加权求和。此外，还可以使用回溯图可视化展示。值得注意的是，这里的回溯图与上文中的转移图不同，状态转移图类似自动机，每一个节点代表一个唯一的状态；而回溯图中不同节点可能代表同一个状态。
 
-![backup](./img/backup-diagram.png)
+![backup](../img/backup-diagram.png)
 
 ## 3.6 Optimal Policies and Optimal Value Functions(最优策略和最优值函数)
 
