@@ -1,0 +1,585 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Chapter 10: On-policy Control with Approximation · Reinforcement Learning: An Introduction(2nd)</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="chapter9.html" />
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"repo":"laddie132/Reinforcement-Learning-Notes","types":["star","watch","fork"],"size":"small"};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    README
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    Part I
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" >
+            
+                <span>
+            
+                    
+                    Chapter 1: Introduction
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="chapter2.html">
+            
+                <a href="chapter2.html">
+            
+                    
+                    Chapter 2: Multi-armed Bandits
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="chapter3.html">
+            
+                <a href="chapter3.html">
+            
+                    
+                    Chapter 3: Finite Markov Decision Processes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="chapter4.html">
+            
+                <a href="chapter4.html">
+            
+                    
+                    Chapter 4: Dynamic Programming
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="chapter5.html">
+            
+                <a href="chapter5.html">
+            
+                    
+                    Chapter 5: Monte Carlo Methods
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="chapter6.html">
+            
+                <a href="chapter6.html">
+            
+                    
+                    Chapter 6: Temporal-Diﬀerence Learning
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="chapter7.html">
+            
+                <a href="chapter7.html">
+            
+                    
+                    Chapter 7: n-step Bootstrapping
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="chapter8.html">
+            
+                <a href="chapter8.html">
+            
+                    
+                    Chapter 8: Planning and Learning with Tabular Methods
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Part II
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="chapter9.html">
+            
+                <a href="chapter9.html">
+            
+                    
+                    Chapter 9: On-policy Prediction with Approximation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.2" data-path="chapter10.html">
+            
+                <a href="chapter10.html">
+            
+                    
+                    Chapter 10: On-policy Control with Approximation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" >
+            
+                <span>
+            
+                    
+                    Chapter 11: Oﬀ-policy Methods with Approximation
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="chapter12.html">
+            
+                <a href="chapter12.html">
+            
+                    
+                    Chapter 12: Eligibility Traces
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="chapter13.html">
+            
+                <a href="chapter13.html">
+            
+                    
+                    Chapter 13: Policy Gradient Methods
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    Part III
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="chapter14.html">
+            
+                <a href="chapter14.html">
+            
+                    
+                    Chapter 14: Psychology
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="chapter15.html">
+            
+                <a href="chapter15.html">
+            
+                    
+                    Chapter 15: Neuroscience
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" >
+            
+                <span>
+            
+                    
+                    Chapter 16: Applications and Case Studies
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Chapter 10: On-policy Control with Approximation</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="chapter-10-on-policy-control-with-approximation"><a name="chapter-10-on-policy-control-with-approximation" class="plugin-anchor" href="#chapter-10-on-policy-control-with-approximation"><i class="fa fa-link" aria-hidden="true"></i></a>Chapter 10 On-policy Control with Approximation</h1>
+<p>&#x8FD9;&#x4E00;&#x7AE0;&#x4E3B;&#x8981;&#x4ECB;&#x7ECD;&#x4E00;&#x4E9B;&#x5728;&#x7EBF;&#x7B56;&#x7565;&#x7684;&#x8FD1;&#x4F3C;&#x63A7;&#x5236;&#x65B9;&#x6CD5;&#xFF0C;&#x5BF9;&#x4E8E;&#x7247;&#x6BB5;&#x5F0F;&#x4EFB;&#x52A1;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5E94;&#x7528;&#x4E4B;&#x524D;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x800C;&#x5BF9;&#x4E8E;&#x8FDE;&#x7EED;&#x5F0F;&#x4EFB;&#x52A1;&#xFF0C;&#x5219;&#x9700;&#x8981;&#x5F15;&#x5165;&#x4E00;&#x4E9B;&#x65B0;&#x7684;&#x6280;&#x5DE7;&#xFF0C;&#x5E76;&#x4E14;&#x4E4B;&#x524D;&#x7684;&#x6298;&#x6263;&#x5956;&#x52B1;&#x673A;&#x5236;&#x4E0D;&#x518D;&#x9700;&#x8981;&#x3002;</p>
+<h2 id="101-episodic-semi-gradient-control"><a name="101-episodic-semi-gradient-control" class="plugin-anchor" href="#101-episodic-semi-gradient-control"><i class="fa fa-link" aria-hidden="true"></i></a>10.1 Episodic Semi-gradient Control</h2>
+<p>&#x5982;&#x679C;&#x52A8;&#x4F5C;&#x7A7A;&#x95F4;&#x662F;&#x79BB;&#x6563;&#x7684;&#x3001;&#x6709;&#x9650;&#x7684;&#xFF0C;&#x5219;&#x76F4;&#x63A5;&#x4E4B;&#x95F4;&#x6309;&#x7167;&#x4E0A;&#x4E00;&#x7AE0;&#x7684;&#x65B9;&#x6CD5;&#x8BA1;&#x7B97;&#x52A8;&#x4F5C;&#x503C;&#x51FD;&#x6570;$\hat { q } \left( S <em> { t } , a , \mathbf { w } </em> { t } \right)$&#xFF0C;&#x7136;&#x540E;&#x5B9A;&#x4E49;&#x6700;&#x4F18;&#x52A8;&#x4F5C;$A <em> { t } ^ { * } = \arg \max </em> { a } \hat { q } \left( S <em> { t } , a , \mathbf { w } </em> { t } \right)$&#x3002;&#x4E4B;&#x540E;&#x4F7F;&#x7528;&#x8F6F;&#x7B56;&#x7565;&#x5B9E;&#x73B0;&#x7B56;&#x7565;&#x63D0;&#x5347;&#x8FC7;&#x7A0B;&#xFF0C;&#x5982;$\epsilon-greedy$&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<p><img src="../img/10-1-1.png" alt="img"></p>
+<h2 id="102-semi-gradient-n-step-sarsa"><a name="102-semi-gradient-n-step-sarsa" class="plugin-anchor" href="#102-semi-gradient-n-step-sarsa"><i class="fa fa-link" aria-hidden="true"></i></a>10.2 Semi-gradient n-step Sarsa</h2>
+<p>&#x5BF9;&#x4E8E;n-step sarsa&#xFF0C;&#x4F7F;&#x7528;&#x540C;&#x6837;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x5176;&#x4E2D;&#xFF0C;&#x6743;&#x91CD;&#x66F4;&#x65B0;&#x516C;&#x5F0F;&#x5982;&#x4E0B;&#xFF1A;
+<script type="math/tex; mode=display">
+\mathbf { w } _ { t + n } \doteq \mathbf { w } _ { t + n - 1 } + \alpha \left[ G _ { t : t + n } - \hat { q } \left( S _ { t } , A _ { t } , \mathbf { w } _ { t + n - 1 } \right) \right] \nabla \hat { q } \left( S _ { t } , A _ { t } , \mathbf { w } _ { t + n - 1 } \right)
+</script>
+&#x4F2A;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="../img/10-2-1.png" alt="img"></p>
+<p>&#x5F88;&#x591A;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x8BBE;&#x7F6E;&#x5927;&#x4E8E;1&#x7684;&#x4E2D;&#x95F4;&#x81EA;&#x5F15;&#x5BFC;&#x6B65;&#x6570;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x6700;&#x597D;&#x7684;&#x7ED3;&#x679C;&#x3002;</p>
+<h2 id="103-average-reward-a-new-problem-setting-for-continuing-tasks"><a name="103-average-reward-a-new-problem-setting-for-continuing-tasks" class="plugin-anchor" href="#103-average-reward-a-new-problem-setting-for-continuing-tasks"><i class="fa fa-link" aria-hidden="true"></i></a>10.3 Average Reward: A New Problem Setting for Continuing Tasks</h2>
+<p>&#x524D;&#x9762;&#x6240;&#x4ECB;&#x7ECD;&#x7684;&#x90FD;&#x662F;&#x5BF9;&#x4E8E;&#x7247;&#x6BB5;&#x5F0F;&#x4EFB;&#x52A1;&#x800C;&#x8A00;&#xFF0C;&#x5E76;&#x4E14;&#x4F7F;&#x7528;&#x6298;&#x6263;&#x5956;&#x52B1;&#x673A;&#x5236;&#x3002;&#x8FD9;&#x4E00;&#x8282;&#x4E3B;&#x8981;&#x9488;&#x5BF9;&#x8FDE;&#x7EED;&#x5F0F;&#x4EFB;&#x52A1;&#xFF0C;&#x5E76;&#x5F15;&#x5165;&#x5747;&#x503C;&#x5956;&#x52B1;&#x8BBE;&#x7F6E;&#xFF0C;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;&#xFF1A;
+<script type="math/tex; mode=display">
+\left.\begin{aligned} r ( \pi ) & \doteq \lim _ { h \rightarrow \infty } \frac { 1 } { h } \sum _ { t = 1 } ^ { h } \mathbb { E } \left[ R _ { t } | A _ { 0 : t - 1 } \sim \pi \right] \\ & = \lim _ { t \rightarrow \infty } \mathbb { E } \left[ R _ { t } | A _ { 0 : t - 1 } \sim \pi \right] \\ & = \sum _ { s } \mu _ { \pi } ( s ) \sum _ { a } \pi ( a | s ) \sum _ { s ^ { \prime } , r } p \left( s ^ { \prime } , r | s , a \right) r \end{aligned} \right.
+</script>
+&#x5176;&#x4E2D;&#xFF0C;$\mu<em>{\pi}$&#x662F;&#x4E00;&#x4E2A;&#x56FA;&#x5B9A;&#x7684;&#x5206;&#x5E03;&#xFF0C;&#x53EF;&#x4EE5;&#x5B9A;&#x4E49;&#x4E3A;$\mu </em> { \pi } ( s ) \doteq \lim <em> { t \rightarrow \infty } \operatorname { Pr } { S </em> { t } = s| A _ { 0 : t - 1 } \sim \pi }$&#xFF0C;&#x8FD9;&#x79CD;&#x5047;&#x8BBE;&#x79F0;&#x4E3A;<strong>&#x904D;&#x5386;</strong>&#xFF0C;&#x8FD9;&#x610F;&#x5473;&#x7740;MDP&#x7684;&#x8D77;&#x59CB;&#x72B6;&#x6001;&#x6216;&#x8005;&#x4EFB;&#x4F55;&#x65E9;&#x671F;&#x51B3;&#x5B9A;&#x90FD;&#x53EA;&#x5177;&#x6709;&#x6709;&#x9650;&#x7684;&#x5F71;&#x54CD;&#xFF0C;&#x5728;&#x957F;&#x671F;&#x8FD0;&#x884C;&#x4E2D;&#xFF0C;&#x671F;&#x671B;&#x503C;&#x53EA;&#x53D7;&#x8F6C;&#x79FB;&#x6982;&#x7387;&#x548C;&#x7B56;&#x7565;&#x7684;&#x5F71;&#x54CD;&#x3002;</p>
+<p>&#x56E0;&#x6B64;&#xFF0C;&#x5728;&#x8FDE;&#x7EED;&#x5F0F;&#x4EFB;&#x52A1;&#x4E2D;&#xFF0C;&#x5747;&#x503C;&#x5956;&#x52B1;&#x6700;&#x5927;&#x7684;&#x7B56;&#x7565;&#x662F;&#x6700;&#x4F18;&#x7B56;&#x7565;&#x3002;&#x6CE8;&#x610F;&#x5230;&#x72B6;&#x6001;&#x7684;&#x5206;&#x5E03;&#x662F;&#x4E0D;&#x53D8;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x5B58;&#x5728;&#x4EE5;&#x4E0B;&#x516C;&#x5F0F;&#xFF1A;
+<script type="math/tex; mode=display">
+\sum _ { s } \mu _ { \pi } ( s ) \sum _ { a } \pi ( a | s ) p \left( s ^ { \prime } | s , a \right) = \mu _ { \pi } \left( s ^ { \prime } \right)
+</script>
+&#x8FD4;&#x56DE;&#x503C;&#x5219;&#x88AB;&#x5B9A;&#x4E49;&#x4E3A;&#x5747;&#x503C;&#x5956;&#x52B1;&#x7684;&#x5DEE;&#x503C;&#xFF0C;&#x5982;&#x4E0B;&#xFF1A;
+<script type="math/tex; mode=display">
+G _ { t } \doteq R _ { t + 1 } - r ( \pi ) + R _ { t + 2 } - r ( \pi ) + R _ { t + 3 } - r ( \pi ) + \cdots
+</script>
+&#x8FD9;&#x4E5F;&#x88AB;&#x79F0;&#x4E3A;&#x5DEE;&#x503C;&#x5956;&#x52B1;&#xFF0C;&#x6B64;&#x5916;&#xFF0C;&#x8FD8;&#x5B58;&#x5728;&#x5DEE;&#x503C;&#x503C;&#x51FD;&#x6570;&#xFF0C;&#x5DEE;&#x503C;&#x8D1D;&#x5C14;&#x66FC;&#x65B9;&#x7A0B;&#x7B49;&#x3002;&#x5DEE;&#x503C;TD error&#x5B9A;&#x4E49;&#x5982;&#x4E0B;&#xFF1A;
+<script type="math/tex; mode=display">
+\left. \begin{array} { l } { \delta _ { t } \doteq R _ { t + 1 } - \overline { R } _ { t + 1 } + \hat { v } \left( S _ { t + 1 } , \mathbf { w } _ { t } \right) - \hat { v } \left( S _ { t } , \mathbf { w } _ { t } \right) } \\  { \delta _ { t } \doteq R _ { t + 1 } - \overline { R } _ { t + 1 } + \hat { q } \left( S _ { t + 1 } , A _ { t + 1 } , \mathbf { w } _ { t } \right) - \hat { q } \left( S _ { t } , A _ { t } , \mathbf { w } _ { t } \right) } \end{array} \right.
+</script>
+&#x8FD9;&#x6837;&#x4E00;&#x6765;&#xFF0C;&#x6743;&#x91CD;&#x66F4;&#x65B0;&#x53EF;&#x4EE5;&#x4E0E;&#x4E0A;&#x4E00;&#x5F20;&#x91C7;&#x7528;&#x76F8;&#x540C;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x5982;&#x4E0B;&#xFF1A;
+<script type="math/tex; mode=display">
+\mathbf { w } _ { t + 1 } \doteq \mathbf { w } _ { t } + \alpha \delta _ { t } \nabla \hat { q } \left( S _ { t } , A _ { t } , \mathbf { w } _ { t } \right)
+</script>
+<img src="../img/10-3-1.png" alt="img"></p>
+<h2 id="104-deprecating-the-discounted-setting"><a name="104-deprecating-the-discounted-setting" class="plugin-anchor" href="#104-deprecating-the-discounted-setting"><i class="fa fa-link" aria-hidden="true"></i></a>10.4 Deprecating the Discounted Setting</h2>
+<p>&#x5728;&#x8FD1;&#x4F3C;&#x5F3A;&#x5316;&#x5B66;&#x4E60;&#x4E2D;&#xFF0C;&#x6298;&#x6263;&#x5956;&#x52B1;&#x673A;&#x5236;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x4F5C;&#x7528;&#x3002;</p>
+<p>&#x8003;&#x8651;&#x4E00;&#x4E2A;&#x65E0;&#x9650;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x5E8F;&#x5217;&#xFF0C;&#x6240;&#x6709;&#x72B6;&#x6001;&#x76F8;&#x540C;&#xFF0C;&#x5047;&#x8BBE;&#x5747;&#x503C;&#x5956;&#x52B1;&#x4E3A;$r(\pi)$&#xFF0C;&#x5219;&#x6298;&#x6263;&#x5956;&#x52B1;&#x7684;&#x6743;&#x91CD;&#x4E3A;$1 + \gamma + \gamma ^ { 2 } + \gamma ^ { 3 } + \cdots = 1 / ( 1 - \gamma )$&#xFF0C;&#x5373;$r ( \pi ) / ( 1 - \gamma )$&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x6298;&#x6263;&#x503C;&#x5BF9;&#x4E8E;&#x6700;&#x7EC8;&#x7684;&#x8BA1;&#x7B97;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x5F71;&#x54CD;&#x3002;</p>
+<p>&#x6839;&#x672C;&#x539F;&#x56E0;&#x5728;&#x4E8E;&#xFF0C;&#x5728;&#x8FD1;&#x4F3C;&#x51FD;&#x6570;&#x903C;&#x8FD1;&#x4E2D;&#xFF0C;&#x5F53;&#x6539;&#x53D8;&#x7B56;&#x7565;&#x6765;&#x63D0;&#x5347;&#x67D0;&#x4E2A;&#x72B6;&#x6001;&#x7684;&#x6298;&#x6263;&#x5956;&#x52B1;&#x503C;&#x65F6;&#xFF0C;&#x5168;&#x5C40;&#x7B56;&#x7565;&#x4E0D;&#x4E00;&#x5B9A;&#x4FDD;&#x8BC1;&#x63D0;&#x5347;&#x3002;&#x5373;4.2&#x8282;&#x4E2D;&#x7684;&#x7B56;&#x7565;&#x63D0;&#x5347;&#x5B9A;&#x4E49;&#x5931;&#x6548;&#x3002;</p>
+<h2 id="105-di&#xFB00;erential-semi-gradient-n-step-sarsa"><a name="105-di&#xFB00;erential-semi-gradient-n-step-sarsa" class="plugin-anchor" href="#105-di&#xFB00;erential-semi-gradient-n-step-sarsa"><i class="fa fa-link" aria-hidden="true"></i></a>10.5 Di&#xFB00;erential Semi-gradient n-step Sarsa</h2>
+<p>&#x8FDE;&#x7EED;&#x5F0F;&#x4EFB;&#x52A1;&#x4ECD;&#x7136;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;n-step&#x81EA;&#x5F15;&#x5BFC;&#x63A7;&#x5236;&#x65B9;&#x6CD5;&#xFF0C;&#x5B9A;&#x4E49;&#x5DEE;&#x503C;&#x8FD4;&#x56DE;&#x503C;&#x5982;&#x4E0B;&#xFF1A;
+<script type="math/tex; mode=display">
+G _ { t : t + n } \doteq R _ { t + 1 } - \overline { R } _ { t + 1 } + R _ { t + 2 } - \overline { R } _ { t + 2 } + \cdots + R _ { t + n } - \overline { R } _ { t + n } + \hat { q } \left( S _ { t + n } , A _ { t + n } , \mathbf { w } _ { t + n - 1 } \right)
+</script>
+&#x5219;n-step td error&#x4E3A;&#xFF1A;
+<script type="math/tex; mode=display">
+\delta _ { t } \doteq G _ { t : t + n } - \hat { q } \left( S _ { t } , A _ { t } , \mathbf { w } \right)
+</script>
+&#x4F2A;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="../img/10-5-1.png" alt="img"></p>
+<h2 id="106-summary"><a name="106-summary" class="plugin-anchor" href="#106-summary"><i class="fa fa-link" aria-hidden="true"></i></a>10.6 Summary</h2>
+<p>&#x8FD9;&#x4E00;&#x7AE0;&#x4E2D;&#x5C06;&#x53C2;&#x6570;&#x5316;&#x51FD;&#x6570;&#x903C;&#x8FD1;&#x7684;&#x65B9;&#x6CD5;&#x548C;&#x534A;&#x68AF;&#x5EA6;&#x4E0B;&#x964D;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5E94;&#x7528;&#x5728;&#x7EBF;&#x7B56;&#x7565;&#x7684;&#x5F3A;&#x5316;&#x5B66;&#x4E60;&#x63A7;&#x5236;&#x65B9;&#x6CD5;&#x4E2D;&#xFF0C;&#x5305;&#x62EC;&#x8FDE;&#x7EED;&#x5F0F;&#x4EFB;&#x52A1;&#x548C;&#x7247;&#x6BB5;&#x5F0F;&#x4EFB;&#x52A1;&#x3002;&#x5BF9;&#x4E8E;&#x8FDE;&#x7EED;&#x5F0F;&#x4EFB;&#x52A1;&#xFF0C;&#x7531;&#x4E8E;&#x5728;&#x51FD;&#x6570;&#x903C;&#x8FD1;&#x65B9;&#x6CD5;&#x4E2D;&#x4E0D;&#x80FD;&#x4F7F;&#x7528;&#x6298;&#x6263;&#x5956;&#x52B1;&#x673A;&#x5236;&#xFF0C;&#x6545;&#x800C;&#x63D0;&#x51FA;&#x5747;&#x503C;&#x5956;&#x52B1;&#x8BBE;&#x7F6E;&#xFF0C;&#x5E76;&#x5F15;&#x5165;&#x5DEE;&#x503C;&#x5F62;&#x5F0F;&#x7684;&#x5404;&#x79CD;&#x503C;&#x51FD;&#x6570;&#x3001;&#x8D1D;&#x5C14;&#x66FC;&#x65B9;&#x7A0B;&#x548C;TD&#x8BEF;&#x5DEE;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="chapter9.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Chapter 9: On-policy Prediction with Approximation">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Chapter 10: On-policy Control with Approximation","level":"1.3.2","depth":2,"next":{"title":"Chapter 11: Oﬀ-policy Methods with Approximation","level":"1.3.3","depth":2,"ref":"","articles":[]},"previous":{"title":"Chapter 9: On-policy Prediction with Approximation","level":"1.3.1","depth":2,"path":"chapter/chapter9.md","ref":"chapter/chapter9.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","back-to-top-button","github","github-buttons","mathjax","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/laddie132"},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"github-buttons":{"repo":"laddie132/Reinforcement-Learning-Notes","types":["star","watch","fork"],"size":"small"},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Reinforcement Learning: An Introduction(2nd)","language":"zh-hans","gitbook":"*"},"file":{"path":"chapter/chapter10.md","mtime":"2018-09-19T06:33:13.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-10T10:13:19.489Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="https://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-mathjax/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

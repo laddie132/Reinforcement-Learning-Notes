@@ -1,0 +1,656 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Chapter 9: On-policy Prediction with Approximation · Reinforcement Learning: An Introduction(2nd)</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="chapter10.html" />
+    
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"repo":"laddie132/Reinforcement-Learning-Notes","types":["star","watch","fork"],"size":"small"};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    README
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    Part I
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" >
+            
+                <span>
+            
+                    
+                    Chapter 1: Introduction
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="chapter2.html">
+            
+                <a href="chapter2.html">
+            
+                    
+                    Chapter 2: Multi-armed Bandits
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="chapter3.html">
+            
+                <a href="chapter3.html">
+            
+                    
+                    Chapter 3: Finite Markov Decision Processes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="chapter4.html">
+            
+                <a href="chapter4.html">
+            
+                    
+                    Chapter 4: Dynamic Programming
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="chapter5.html">
+            
+                <a href="chapter5.html">
+            
+                    
+                    Chapter 5: Monte Carlo Methods
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="chapter6.html">
+            
+                <a href="chapter6.html">
+            
+                    
+                    Chapter 6: Temporal-Diﬀerence Learning
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="chapter7.html">
+            
+                <a href="chapter7.html">
+            
+                    
+                    Chapter 7: n-step Bootstrapping
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="chapter8.html">
+            
+                <a href="chapter8.html">
+            
+                    
+                    Chapter 8: Planning and Learning with Tabular Methods
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Part II
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.3.1" data-path="chapter9.html">
+            
+                <a href="chapter9.html">
+            
+                    
+                    Chapter 9: On-policy Prediction with Approximation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="chapter10.html">
+            
+                <a href="chapter10.html">
+            
+                    
+                    Chapter 10: On-policy Control with Approximation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" >
+            
+                <span>
+            
+                    
+                    Chapter 11: Oﬀ-policy Methods with Approximation
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="chapter12.html">
+            
+                <a href="chapter12.html">
+            
+                    
+                    Chapter 12: Eligibility Traces
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="chapter13.html">
+            
+                <a href="chapter13.html">
+            
+                    
+                    Chapter 13: Policy Gradient Methods
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    Part III
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="chapter14.html">
+            
+                <a href="chapter14.html">
+            
+                    
+                    Chapter 14: Psychology
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="chapter15.html">
+            
+                <a href="chapter15.html">
+            
+                    
+                    Chapter 15: Neuroscience
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" >
+            
+                <span>
+            
+                    
+                    Chapter 16: Applications and Case Studies
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Chapter 9: On-policy Prediction with Approximation</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="chapter-9-on-policy-prediction-with-approximation"><a name="chapter-9-on-policy-prediction-with-approximation" class="plugin-anchor" href="#chapter-9-on-policy-prediction-with-approximation"><i class="fa fa-link" aria-hidden="true"></i></a>Chapter 9 On-policy Prediction with Approximation</h1>
+<p>&#x8FD9;&#x4E00;&#x7AE0;&#x63D0;&#x51FA;&#x53C2;&#x6570;&#x5316;&#x7684;&#x503C;&#x51FD;&#x6570;&#xFF0C;&#x5199;&#x4F5C;$\hat { v } ( s , \mathbf { w } ) \approx v _ { \pi } ( s )$&#xFF0C;&#x5176;&#x4E2D;&#x53C2;&#x6570;&#x5927;&#x5C0F;&#x8FDC;&#x8FDC;&#x5C0F;&#x4E8E;&#x72B6;&#x6001;&#x7A7A;&#x95F4;&#x5927;&#x5C0F;&#xFF0C;&#x4ECE;&#x800C;&#x6EE1;&#x8DB3;&#x6CDB;&#x5316;&#x8981;&#x6C42;&#x3002;&#x5F53;&#x6539;&#x53D8;&#x67D0;&#x4E2A;&#x72B6;&#x6001;&#x7684;&#x503C;&#x51FD;&#x6570;&#x65F6;&#xFF0C;&#x5176;&#x4ED6;&#x72B6;&#x6001;&#x7684;&#x503C;&#x51FD;&#x6570;&#x53EF;&#x80FD;&#x4E5F;&#x4F1A;&#x968F;&#x4E4B;&#x53D8;&#x5316;&#x3002;</p>
+<p>&#x7136;&#x800C;&#xFF0C;&#x5BF9;&#x4E8E;&#x90E8;&#x5206;&#x53EF;&#x89C2;&#x5BDF;&#x7684;&#x95EE;&#x9898;&#x800C;&#x8A00;&#xFF0C;&#x51FD;&#x6570;&#x903C;&#x8FD1;&#x7684;&#x65B9;&#x6CD5;&#x4E0D;&#x80FD;&#x4F7F;&#x7528;&#x8FC7;&#x53BB;&#x89C2;&#x5BDF;&#x5230;&#x7684;&#x8BB0;&#x5FC6;&#x589E;&#x52A0;&#x72B6;&#x6001;&#x8868;&#x793A;&#x3002;</p>
+<h2 id="91-value-function-approximation"><a name="91-value-function-approximation" class="plugin-anchor" href="#91-value-function-approximation"><i class="fa fa-link" aria-hidden="true"></i></a>9.1 Value-function Approximation</h2>
+<p>&#x524D;&#x6587;&#x4E2D;&#x6240;&#x6709;&#x7684;&#x9884;&#x6D4B;&#x65B9;&#x5F0F;&#x90FD;&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x66F4;&#x65B0;&#x76EE;&#x6807;&#xFF0C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p>MC&#xFF1A;$S <em> { t } \mapsto G </em> { t }$</p>
+<p>TD(0)&#xFF1A;$S <em> { t } \mapsto R </em> { t + 1 } + \gamma \hat { v } \left( S <em> { t + 1 } , \mathbf { w } </em> { t } \right)$</p>
+<p>N-step TD: $S <em> { t } \mapsto G </em> { t : t + n }$</p>
+<p>DP: $s \mapsto \mathbb { E } <em> { \pi } \left[ R </em> { t + 1 } + \gamma \hat { v } \left( S <em> { t + 1 } , \mathbf { w } </em> { t } \right) | S _ { t } = s \right]$</p>
+<p>&#x5C06;&#x6BCF;&#x4E00;&#x4E2A;&#x72B6;&#x6001;&#x66F4;&#x65B0;&#x770B;&#x505A;&#x662F;&#x4F20;&#x7EDF;&#x7684;&#x8BAD;&#x7EC3;&#x6837;&#x4F8B;&#xFF0C;&#x4ECE;&#x800C;&#x5C06;&#x503C;&#x51FD;&#x6570;&#x9884;&#x6D4B;&#x770B;&#x505A;&#x662F;&#x76D1;&#x7763;&#x5B66;&#x4E60;&#x7684;&#x8FC7;&#x7A0B;&#x3002;</p>
+<p>&#x5F88;&#x591A;&#x4F20;&#x7EDF;&#x7684;&#x76D1;&#x7763;&#x5B66;&#x4E60;&#x65B9;&#x6CD5;&#x90FD;&#x53EF;&#x4EE5;&#x5E94;&#x7528;&#x5230;&#x5F3A;&#x5316;&#x5B66;&#x4E60;&#x4E2D;&#x3002;&#x7136;&#x800C;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x6EE1;&#x8DB3;&#x4EE5;&#x4E0B;&#x4E24;&#x70B9;&#xFF1A;1. &#x80FD;&#x591F;&#x5B9E;&#x73B0;&#x589E;&#x91CF;&#x5B66;&#x4E60;&#xFF1B;2. &#x53EF;&#x4EE5;&#x5904;&#x7406;&#x4E0D;&#x7A33;&#x5B9A;&#x76EE;&#x6807;&#x51FD;&#x6570;</p>
+<h2 id="92-the-prediction-objective-ve"><a name="92-the-prediction-objective-ve" class="plugin-anchor" href="#92-the-prediction-objective-ve"><i class="fa fa-link" aria-hidden="true"></i></a>9.2 The Prediction Objective (VE)</h2>
+<p>&#x5728;&#x51FD;&#x6570;&#x903C;&#x8FD1;&#x65B9;&#x5F0F;&#x4E2D;&#xFF0C;&#x4E00;&#x4E2A;&#x72B6;&#x6001;&#x66F4;&#x65B0;&#x53EF;&#x80FD;&#x4F1A;&#x5F71;&#x54CD;&#x5176;&#x4ED6;&#x72B6;&#x6001;&#xFF0C;&#x56E0;&#x6B64;&#x65E0;&#x6CD5;&#x6EE1;&#x8DB3;&#x6240;&#x6709;&#x72B6;&#x6001;&#x90FD;&#x5F97;&#x5230;&#x51C6;&#x786E;&#x7684;&#x503C;&#x51FD;&#x6570;&#x3002;&#x8FD9;&#x91CC;&#x5B9A;&#x4E49;&#x5747;&#x65B9;&#x8BEF;&#x5DEE;&#x5982;&#x4E0B;&#xFF1A;
+<script type="math/tex; mode=display">
+\overline { \mathrm { VE } } ( \mathbf { w } ) \doteq \sum _ { s \in \mathbb { S } } \mu ( s ) \left[ v _ { \pi } ( s ) - \hat { v } ( s , \mathbf { w } ) \right] ^ { 2 }
+</script>
+&#x5176;&#x4E2D;&#xFF0C;$\mu$&#x4E3A;&#x6BCF;&#x4E00;&#x4E2A;&#x72B6;&#x6001;&#x7684;&#x6743;&#x91CD;&#xFF0C;&#x5373;&#x4E00;&#x4E2A;&#x72B6;&#x6001;&#x5206;&#x5E03;&#x3002;&#x901A;&#x5E38;&#x4F7F;&#x7528;on-policy&#x5206;&#x5E03;&#xFF0C;&#x5BF9;&#x4E8E;&#x8FDE;&#x7EED;&#x4EFB;&#x52A1;&#x800C;&#x8A00;&#xFF0C;&#x5728;&#x7EBF;&#x5206;&#x5E03;&#x5C31;&#x662F;&#x67D0;&#x4E2A;&#x7B56;&#x7565;&#x4E0B;&#x7684;&#x56FA;&#x5B9A;&#x5206;&#x5E03;&#x3002;&#x5B9A;&#x4E49;on-policy&#x5206;&#x5E03;&#x5982;&#x4E0B;&#xFF1A;
+<script type="math/tex; mode=display">
+\eta ( s ) = h ( s ) + \sum _ { \overline { s } } \eta ( \overline { s } ) \sum _ { a } \pi ( a | \overline { s } ) p ( s | \overline { s } , a ) , \text { for all } s \in \delta\\
+\mu ( s ) = \frac { \eta ( s ) } { \sum _ { s ^ { \prime } } \eta \left( s ^ { \prime } \right) } , \quad \text { for all } s \in \delta
+</script>
+&#x5176;&#x4E2D;&#xFF0C;$\eta ( s )$&#x4E3A;&#x4E00;&#x4E2A;&#x7247;&#x6BB5;&#x4E2D;&#x67D0;&#x4E2A;&#x72B6;&#x6001;s&#x7684;&#x5E73;&#x5747;&#x8BBF;&#x95EE;&#x6B21;&#x6570;&#xFF0C;$h(s)$&#x4E3A;&#x4E00;&#x4E2A;&#x7247;&#x6BB5;&#x4E2D;&#x72B6;&#x6001;s&#x5F00;&#x5934;&#x7684;&#x6982;&#x7387;&#x3002;</p>
+<p>&#x56DE;&#x60F3;&#x6211;&#x4EEC;&#x7684;&#x7EC8;&#x6781;&#x76EE;&#x6807;&#x662F;&#x5F97;&#x5230;&#x6700;&#x4F18;&#x7B56;&#x7565;&#xFF0C;&#x4F46;&#x4E0D;&#x4E00;&#x5B9A;&#x6EE1;&#x8DB3;&#x5747;&#x65B9;&#x8BEF;&#x5DEE;&#x6700;&#x5C0F;&#x3002;&#x4F46;&#x76EE;&#x524D;&#x5E76;&#x4E0D;&#x6E05;&#x695A;&#x503C;&#x51FD;&#x6570;&#x9884;&#x6D4B;&#x7684;&#x660E;&#x786E;&#x76EE;&#x6807;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x80FD;&#x4E13;&#x6CE8;&#x4E8E;&#x5747;&#x65B9;&#x8BEF;&#x5DEE;&#x3002;</p>
+<p>&#x5F53;&#x7136;&#xFF0C;&#x5BF9;&#x4E8E;&#x6700;&#x5C0F;&#x5316;&#x5747;&#x65B9;&#x8BEF;&#x5DEE;&#xFF0C;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x5BFB;&#x627E;&#x5230;&#x5168;&#x5C40;&#x6700;&#x4F18;&#x503C;&#xFF0C;&#x4F46;&#x53D7;&#x9650;&#x4E8E;&#x590D;&#x6742;&#x7684;&#x503C;&#x51FD;&#x6570;&#xFF0C;&#x4E00;&#x822C;&#x53EA;&#x80FD;&#x5BFB;&#x627E;&#x5230;&#x5C40;&#x90E8;&#x6700;&#x4F18;&#x503C;&#xFF0C;&#x8FD9;&#x5E76;&#x4E0D;&#x4F1A;&#x5F71;&#x54CD;&#x5F88;&#x5927;&#xFF0C;&#x5F80;&#x5F80;&#x5DF2;&#x7ECF;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x8DB3;&#x591F;&#x597D;&#x7684;&#x7ED3;&#x679C;&#x3002;</p>
+<h2 id="93-stochastic-gradient-and-semi-gradient-methods"><a name="93-stochastic-gradient-and-semi-gradient-methods" class="plugin-anchor" href="#93-stochastic-gradient-and-semi-gradient-methods"><i class="fa fa-link" aria-hidden="true"></i></a>9.3 Stochastic-gradient and Semi-gradient Methods</h2>
+<p>&#x5BF9;&#x4E8E;&#x5B66;&#x4E60;&#x503C;&#x51FD;&#x6570;&#x800C;&#x8A00;&#xFF0C;&#x5927;&#x591A;&#x57FA;&#x4E8E;&#x968F;&#x673A;&#x68AF;&#x5EA6;&#x4E0B;&#x964D;&#x65B9;&#x5F0F;&#x4F18;&#x5316;&#x635F;&#x5931;&#x51FD;&#x6570;&#xFF0C;&#x5373;&#x6700;&#x5C0F;&#x5316;&#x5747;&#x65B9;&#x8BEF;&#x5DEE;&#xFF0C;&#x516C;&#x5F0F;&#x5982;&#x4E0B;&#xFF1A;
+<script type="math/tex; mode=display">
+\left.\begin{aligned} \mathbf { w } _ { t + 1 } & \doteq \mathbf { w } _ { t } - \frac { 1 } { 2 } \alpha \nabla \left[ v _ { \pi } \left( S _ { t } \right) - \hat { v } \left( S _ { t } , \mathbf { w } _ { t } \right) \right] ^ { 2 } \\ & = \mathbf { w } _ { t } + \alpha \left[ v _ { \pi } \left( S _ { t } \right) - \hat { v } \left( S _ { t } , \mathbf { w } _ { t } \right) \right] \nabla \hat { v } \left( S _ { t } , \mathbf { w } _ { t } \right) \end{aligned} \right.
+</script>
+&#x5176;&#x4E2D;$\alpha$&#x4E3A;&#x5B66;&#x4E60;&#x7387;&#xFF0C;&#x968F;&#x65F6;&#x95F4;&#x9012;&#x51CF;&#xFF0C;&#x4ECE;&#x800C;&#x4FDD;&#x8BC1;&#x6536;&#x655B;&#x5230;&#x5C40;&#x90E8;&#x6700;&#x4F18;&#x3002;&#x8FD9;&#x4E3B;&#x8981;&#x53D7;&#x9650;&#x4E8E;2.7&#x8282;&#x4E2D;&#x7684;&#x6536;&#x655B;&#x6761;&#x4EF6;&#x3002;&#x6B64;&#x5916;&#x4F7F;&#x7528;&#x5C0F;&#x7684;&#x5B66;&#x4E60;&#x7387;&#x662F;&#x56E0;&#x4E3A;&#x6BCF;&#x6B21;&#x66F4;&#x65B0;&#x503C;&#x5E76;&#x4E0D;&#x4E00;&#x5B9A;&#x51C6;&#x786E;&#xFF0C;&#x5982;&#x81EA;&#x5F15;&#x5BFC;&#x7B49;&#x65B9;&#x5F0F;&#x3002;&#x8FD9;&#x91CC;&#x4F7F;&#x7528;&#x968F;&#x673A;&#x68AF;&#x5EA6;&#x4E0B;&#x964D;&#x4E5F;&#x662F;&#x5982;&#x6B64;&#xFF0C;&#x56E0;&#x4E3A;&#x6BCF;&#x6B21;&#x53EA;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x6837;&#x4F8B;&#x8FDB;&#x884C;&#x66F4;&#x65B0;&#x3002;</p>
+<p>&#x4E00;&#x822C;&#x800C;&#x8A00;&#xFF0C;&#x6B63;&#x786E;&#x7684;&#x503C;&#x51FD;&#x6570;&#x662F;&#x672A;&#x77E5;&#x7684;&#xFF0C;&#x6545;&#x800C;&#x4F7F;&#x7528;&#x5982;&#x4E0B;&#x66F4;&#x65B0;&#x516C;&#x5F0F;&#xFF1A;
+<script type="math/tex; mode=display">
+\mathbf { w } _ { t + 1 } \doteq \mathbf { w } _ { t } + \alpha \left[ U _ { t } - \hat { v } \left( S _ { t } , \mathbf { w } _ { t } \right) \right] \nabla \hat { v } \left( S _ { t } , \mathbf { w } _ { t } \right)
+</script>
+&#x5982;&#x679C;$U<em>t$&#x662F;&#x503C;&#x51FD;&#x6570;&#x7684;&#x65E0;&#x504F;&#x4F30;&#x8BA1;&#xFF0C;&#x5373;$\mathbb { E } \left[ U </em> { t } | S <em> { t } = s \right] = v </em> { \pi } \left( S _ { t } \right)$&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x4FDD;&#x8BC1;&#x6536;&#x655B;&#x5230;&#x5C40;&#x90E8;&#x6700;&#x4F18;&#x503C;&#x3002;</p>
+<p>&#x57FA;&#x4E8E;MC&#x7684;SGD&#x7B97;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="../img/9-3-1.png" alt="img"></p>
+<p>&#x4F46;&#x662F;&#x5728;&#x81EA;&#x5F15;&#x5BFC;&#x65B9;&#x5F0F;&#x4E2D;&#xFF0C;&#x65E0;&#x6CD5;&#x6EE1;&#x8DB3;&#x65E0;&#x504F;&#x4F30;&#x8BA1;&#x8FD9;&#x4E00;&#x8981;&#x6C42;&#xFF0C;&#x6743;&#x503C;&#x66F4;&#x65B0;&#x4F9D;&#x8D56;&#x4E8E;&#x4E0B;&#x4E00;&#x4E2A;&#x72B6;&#x6001;&#x7684;&#x503C;&#x51FD;&#x6570;&#x3002;&#x5982;&#x679C;&#x4ECD;&#x7136;&#x4F7F;&#x7528;&#x539F;&#x516C;&#x5F0F;&#xFF0C;&#x4E0D;&#x8003;&#x8651;&#x4E0B;&#x4E00;&#x4E2A;&#x72B6;&#x6001;&#x503C;&#x51FD;&#x6570;&#x7684;&#x6C42;&#x5BFC;&#xFF0C;&#x5219;&#x79F0;&#x4E3A;&#x534A;&#x68AF;&#x5EA6;&#x4E0B;&#x964D;&#x65B9;&#x5F0F;&#x3002;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x5728;&#x4E00;&#x4E9B;&#x60C5;&#x51B5;&#x4E0B;&#x4ECD;&#x7136;&#x53EF;&#x4EE5;&#x6536;&#x655B;&#xFF0C;&#x5982;&#x7EBF;&#x6027;&#x62DF;&#x5408;&#xFF0C;&#x5E76;&#x4E14;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x5141;&#x8BB8;&#x5FEB;&#x901F;&#x8BA1;&#x7B97;&#xFF0C;&#x5141;&#x8BB8;&#x8FDE;&#x7EED;&#x5F0F;&#x4EFB;&#x52A1;&#x548C;&#x5728;&#x7EBF;&#x5B66;&#x4E60;&#x3002;</p>
+<p><img src="../img/9-3-2.png" alt="img"></p>
+<p>&#x72B6;&#x6001;&#x805A;&#x5408;&#xFF0C;&#x5373;&#x5C06;&#x72B6;&#x6001;&#x7A7A;&#x95F4;&#x5212;&#x5206;&#x7EC4;&#xFF0C;&#x6BCF;&#x4E2A;&#x7EC4;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x4F30;&#x8BA1;&#x503C;&#x4EE3;&#x8868;&#x5BF9;&#x5E94;&#x503C;&#x51FD;&#x6570;&#x3002;&#x8FD9;&#x4E5F;&#x53EF;&#x4EE5;&#x770B;&#x505A;&#x662F;SGD&#x7684;&#x4E00;&#x79CD;&#x7279;&#x6B8A;&#x5F62;&#x5F0F;&#xFF0C;&#x5373;&#x5BF9;&#x4E8E;&#x72B6;&#x6001;s&#x6240;&#x5728;&#x7EC4;&#x5185;&#x7684;&#x6240;&#x6709;&#x72B6;&#x6001;&#x68AF;&#x5EA6;&#x503C;&#x4E3A;1&#xFF0C;&#x800C;&#x5176;&#x4ED6;&#x72B6;&#x6001;&#x5BF9;&#x5E94;&#x68AF;&#x5EA6;&#x4E3A;0&#x3002;</p>
+<h2 id="94-linear-methods"><a name="94-linear-methods" class="plugin-anchor" href="#94-linear-methods"><i class="fa fa-link" aria-hidden="true"></i></a>9.4 Linear Methods</h2>
+<p>&#x51FD;&#x6570;&#x903C;&#x8FD1;&#x7684;&#x4E00;&#x4E2A;&#x6700;&#x5E38;&#x7528;&#x7684;&#x4F8B;&#x5B50;&#x5C31;&#x662F;&#x7EBF;&#x6027;&#x65B9;&#x6CD5;&#xFF0C;&#x516C;&#x5F0F;&#x5982;&#x4E0B;&#xFF1A;
+<script type="math/tex; mode=display">
+\hat { v } ( s , \mathbf { w } ) \doteq \mathbf { w } ^ { T } \mathbf { x } ( s ) \doteq \sum _ { i = 1 } ^ { d } w _ { i } x _ { i } ( s )
+</script>
+&#x5176;&#x4E2D;&#xFF0C;x&#x4E3A;&#x72B6;&#x6001;s&#x7684;&#x7279;&#x5F81;&#x5411;&#x91CF;&#xFF0C;&#x6216;&#x8005;&#x79F0;&#x4E3A;&#x57FA;&#x672C;&#x51FD;&#x6570;&#xFF08;basic functions&#xFF09;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x6784;&#x9020;d&#x7EF4;&#x7279;&#x5F81;&#x5411;&#x91CF;&#x7684;&#x8FC7;&#x7A0B;&#x4E5F;&#x662F;&#x9009;&#x62E9;d&#x4E2A;&#x57FA;&#x672C;&#x51FD;&#x6570;&#x7684;&#x8FC7;&#x7A0B;&#x3002;</p>
+<p>&#x7ED3;&#x5408;&#x4E0A;&#x4E00;&#x8282;&#x7684;SGD&#x65B9;&#x6CD5;&#xFF0C;&#x66F4;&#x65B0;&#x6743;&#x91CD;&#x5982;&#x4E0B;&#xFF1A;
+<script type="math/tex; mode=display">
+\mathbf { w } _ { t + 1 } \doteq \mathbf { w } _ { t } + \alpha \left[ U _ { t } - \hat { v } \left( S _ { t } , \mathbf { w } _ { t } \right) \right] \mathbf { x } \left( S _ { t } \right)
+</script>
+&#x5728;&#x7EBF;&#x6027;&#x65B9;&#x6CD5;&#x4E2D;&#xFF0C;&#x53EA;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x6700;&#x4F18;&#x503C;&#xFF0C;&#x6545;&#x800C;&#x4F1A;&#x6536;&#x655B;&#x5230;&#x5168;&#x5C40;&#x6700;&#x4F18;&#x3002;&#x4F46;&#x5BF9;&#x4E8E;&#x534A;&#x68AF;&#x5EA6;&#x4E0B;&#x964D;&#x7684;TD(0)&#x800C;&#x8A00;&#xFF0C;&#x4ECD;&#x7136;&#x4E0D;&#x4F1A;&#x6536;&#x655B;&#x5230;&#x5168;&#x5C40;&#x6700;&#x4F18;&#xFF0C;&#x800C;&#x662F;&#x4E00;&#x4E2A;&#x8FD1;&#x4F3C;&#x503C;&#xFF0C;&#x516C;&#x5F0F;&#x5982;&#x4E0B;&#xFF1A;
+<script type="math/tex; mode=display">
+\left.\begin{aligned} \mathbf { w } _ { t + 1 } & \doteq \mathbf { w } _ { t } + \alpha \left( R _ { t + 1 } + \gamma \mathbf { w } _ { t } ^ { T } \mathbf { x } _ { t + 1 } - \mathbf { w } _ { t } ^ { T } \mathbf { x } _ { t } \right) \mathbf { x } _ { t } \\ & = \mathbf { w } _ { t } + \alpha \left( R _ { t + 1 } \mathbf { x } _ { t } - \mathbf { x } _ { t } \left( \mathbf { x } _ { t } - \gamma \mathbf { x } _ { t + 1 } \right) ^ { T } \mathbf { w } _ { t } \right) \end{aligned} \right.
+</script>
+&#x8FDB;&#x4E00;&#x6B65;&#xFF0C;&#x4E0B;&#x4E00;&#x4E2A;&#x6743;&#x91CD;&#x7684;&#x671F;&#x671B;&#x503C;&#x5982;&#x4E0B;&#xFF1A;
+<script type="math/tex; mode=display">
+\mathbb { E } \left[ \mathbf { w } _ { t + 1 } | \mathbf { w } _ { t } \right] = \mathbf { w } _ { t } + \alpha \left( \mathbf { b } - \mathbf { A } \mathbf { w } _ { t } \right)\\
+\mathbf { b } \doteq \mathbb { E } \left[ R _ { t + 1 } \mathbf { x } _ { t } \right] \in \mathbb { R } ^ { d } \quad \text { and } \quad \mathbf { A } \doteq \mathbb { E } \left[ \mathbf { x } _ { t } \left( \mathbf { x } _ { t } - \gamma \mathbf { x } _ { t + 1 } \right) ^ { T } \right] \in \mathbb { R } ^ { d } \times \mathbb { R } ^ { d }
+</script>
+&#x8981;&#x4F7F;&#x6743;&#x91CD;&#x6536;&#x655B;&#xFF0C;&#x9700;&#x6EE1;&#x8DB3;&#x4EE5;&#x4E0B;&#x6761;&#x4EF6;&#xFF1A;
+<script type="math/tex; mode=display">
+\left.\begin{aligned} \mathbf { b } - \mathbf { A } \mathbf { w } \mathrm { TD } & = \mathbf { 0 } \\ \mathbf { b } & = \mathbf { A } \mathbf { w } \mathrm { D } \\ \mathbf { w } _ { \mathrm { TD } } & \doteq \mathbf { A } ^ { - 1 } \mathbf { b } \end{aligned} \right.
+</script>
+&#x8FD9;&#x4E5F;&#x79F0;&#x4E3A;TD fix point&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x76F4;&#x63A5;&#x6C42;&#x89E3;&#x8FD9;&#x4E2A;&#x65B9;&#x7A0B;&#x5F97;&#x5230;&#x534A;&#x68AF;&#x5EA6;&#x4E0B;&#x964D;TD(0)&#x7684;&#x89E3;&#xFF0C;&#x5728;TD fix point&#xFF0C;&#x7ECF;&#x8BC1;&#x660E;&#x6EE1;&#x8DB3;&#x4E00;&#x4E0B;&#x6761;&#x4EF6;&#xFF1A;
+<script type="math/tex; mode=display">
+\overline { \mathrm { VE } } ( \mathbf { w } \mathrm { TD } ) \leq \frac { 1 } { 1 - \gamma } \min _ { \mathbf { w } } \overline { \mathrm { VE } } ( \mathbf { w } )
+</script>
+&#x540C;&#x6837;&#xFF0C;&#x5176;&#x4ED6;&#x7684;&#x5728;&#x7EBF;&#x7B56;&#x7565;&#x81EA;&#x5F15;&#x5BFC;&#x7B97;&#x6CD5;&#x4E5F;&#x6EE1;&#x8DB3;&#x3002;&#x6B64;&#x5916;&#xFF0C;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#x90FD;&#x662F;&#x7528;&#x5728;&#x7EBF;&#x7B56;&#x7565;&#x5206;&#x5E03;&#x66F4;&#x65B0;&#x6743;&#x91CD;&#xFF0C;&#x5982;&#x679C;&#x4F7F;&#x7528;&#x5176;&#x4ED6;&#x5206;&#x5E03;&#xFF0C;&#x53EF;&#x80FD;&#x4E0D;&#x4F1A;&#x6536;&#x655B;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;n-step TD&#xFF0C;&#x534A;&#x68AF;&#x5EA6;&#x4E0B;&#x964D;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="../img/9-4-1.png" alt="img"></p>
+<p>&#x5176;&#x4E2D;&#xFF0C;&#x5173;&#x952E;&#x7684;&#x6743;&#x91CD;&#x66F4;&#x65B0;&#x516C;&#x5F0F;&#x4E3A;&#xFF1A;</p>
+<p>$\mathbf { w } <em> { t + n } \doteq \mathbf { w } </em> { t + n - 1 } + \alpha \left[ G <em> { t : t + n } - \hat { v } \left( S </em> { t } , \mathbf { w } <em> { t + n - 1 } \right) \right] \nabla \hat { v } \left( S </em> { t } , \mathbf { w } _ { t + n - 1 } \right) , \quad 0 \leq t &lt; T$</p>
+<h2 id="96-selecting-step-size-parameters-manually"><a name="96-selecting-step-size-parameters-manually" class="plugin-anchor" href="#96-selecting-step-size-parameters-manually"><i class="fa fa-link" aria-hidden="true"></i></a>9.6 Selecting Step-Size Parameters Manually</h2>
+<p>&#x5BF9;&#x4E8E;&#x5B66;&#x4E60;&#x6B65;&#x957F;&#xFF0C;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x9010;&#x6E10;&#x51CF;&#x5C0F;&#x7684;&#x503C;&#x3002;&#x5728;MC&#x4E2D;&#xFF0C;&#x6B65;&#x957F;&#x9009;&#x53D6;1/t&#xFF0C;&#x5F97;&#x5230;&#x7684;&#x662F;sample average&#x7684;&#x503C;&#xFF0C;&#x4F46;&#x4E0D;&#x9002;&#x7528;&#x4E8E;&#x4E0D;&#x7A33;&#x5B9A;&#x95EE;&#x9898;&#x3002;</p>
+<p>&#x4E00;&#x822C;&#x800C;&#x8A00;&#xFF0C;&#x9009;&#x53D6;&#x6B65;&#x957F;$\alpha = \frac { 1 } { \tau }$&#xFF0C;&#x5219;&#x5728;&#x9047;&#x5230;$\tau$&#x4E2A;&#x72B6;&#x6001;s&#x7684;&#x6837;&#x4F8B;&#x66F4;&#x65B0;&#x540E;&#xFF0C;&#x72B6;&#x6001;s&#x7684;&#x503C;&#x51FD;&#x6570;&#x63A5;&#x8FD1;&#x76EE;&#x6807;&#x5747;&#x503C;&#xFF0C;&#x5E76;&#x4E14;&#x65F6;&#x95F4;&#x8D8A;&#x8FD1;&#x7684;&#x6837;&#x4F8B;&#x6743;&#x91CD;&#x66F4;&#x5927;&#x3002;</p>
+<p>&#x7136;&#x800C;&#x4E0D;&#x540C;&#x72B6;&#x6001;&#x4E4B;&#x95F4;&#x53EF;&#x80FD;&#x76F8;&#x4F3C;&#x6216;&#x8005;&#x4E0D;&#x76F8;&#x4F3C;&#xFF0C;&#x65E0;&#x6CD5;&#x51C6;&#x786E;&#x5B9A;&#x4E49;&#x3002;&#x6545;&#x800C;&#x5BF9;&#x4E8E;&#x7EBF;&#x6027;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x6539;&#x7528;$\tau$&#x4E2A;&#x76F8;&#x540C;&#x7279;&#x5F81;&#x5411;&#x91CF;&#xFF0C;&#x6700;&#x540E;&#x8BBE;&#x7F6E;&#x5982;&#x4E0B;&#xFF1A;
+<script type="math/tex; mode=display">
+\alpha \doteq \left( \tau \mathbb { E } \left[ \mathbf { x } ^ { T } \mathbf { x } \right] \right) ^ { - 1 }
+</script></p>
+<h2 id="97-nonlinear-function-approximation-arti&#xFB01;cial-neural-networks"><a name="97-nonlinear-function-approximation-arti&#xFB01;cial-neural-networks" class="plugin-anchor" href="#97-nonlinear-function-approximation-arti&#xFB01;cial-neural-networks"><i class="fa fa-link" aria-hidden="true"></i></a>9.7 Nonlinear Function Approximation: Arti&#xFB01;cial Neural Networks</h2>
+<p>&#x8FD9;&#x4E00;&#x8282;&#x4F7F;&#x7528;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x903C;&#x8FD1;&#x503C;&#x51FD;&#x6570;&#x3002;&#x597D;&#x5904;&#x5728;&#x4E8E;&#x4E0D;&#x9700;&#x8981;&#x624B;&#x5DE5;&#x7279;&#x5F81;&#xFF0C;&#x4F7F;&#x7528;&#x968F;&#x673A;&#x68AF;&#x5EA6;&#x4E0B;&#x964D;&#x8FDB;&#x884C;&#x8BAD;&#x7EC3;&#x3002;</p>
+<p>&#x4F7F;&#x7528;&#x5230;&#x5F3A;&#x5316;&#x5B66;&#x4E60;&#xFF0C;&#x5305;&#x62EC;&#x4EE5;&#x4E0B;&#x65B9;&#x5F0F;&#xFF1A;1. &#x6700;&#x5C0F;&#x5316;TD error&#xFF1B;2. &#x6700;&#x5927;&#x5316;&#x671F;&#x671B;&#x5956;&#x52B1;&#xFF1B;3. policy-gradient&#x3002;</p>
+<p>&#x7136;&#x800C;&#xFF0C;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x5B58;&#x5728;&#x8FC7;&#x62DF;&#x5408;&#x95EE;&#x9898;&#xFF0C;&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x5305;&#x62EC;&#xFF1A;&#x6B63;&#x5219;&#x5316;&#x3001;&#x6743;&#x91CD;&#x5171;&#x4EAB;&#x3001;dropout&#x7B49;&#x3002;&#x6B64;&#x5916;&#xFF0C;&#x8FD8;&#x5305;&#x62EC;&#x4E00;&#x4E9B;&#x7279;&#x6B8A;&#x7684;&#x6280;&#x5DE7;&#xFF0C;&#x5305;&#x62EC;deep belief networks&#x3001;batch normalization&#x3001;deep residual learning&#x7B49;&#x3002;</p>
+<h2 id="98-least-squares-td"><a name="98-least-squares-td" class="plugin-anchor" href="#98-least-squares-td"><i class="fa fa-link" aria-hidden="true"></i></a>9.8 Least-Squares TD</h2>
+<p>&#x6700;&#x5C0F;&#x4E8C;&#x4E58;TD&#x7528;&#x4E8E;&#x89E3;&#x51B3;9.4&#x8282;&#x4E2D;&#x534A;&#x68AF;&#x5EA6;&#x4E0B;&#x964D;&#x7684;TD(0)&#x7EBF;&#x6027;&#x65B9;&#x6CD5;&#x3002;&#x5373;&#x53EF;&#x4EE5;&#x4E00;&#x6B21;&#x6027;&#x6C42;&#x89E3;TD fix point&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x8FED;&#x4EE3;&#x66F4;&#x65B0;&#x3002;&#x56DE;&#x987E;&#x4E00;&#x4E0B;&#x516C;&#x5F0F;&#xFF1A;
+<script type="math/tex; mode=display">
+\mathbf { w } _ { \mathrm { TD } } = \mathbf { A } ^ { - 1 } \mathbf { b } \\
+\mathbf { A } \doteq \mathbb { E } \left[ \mathbf { x } _ { t } \left( \mathbf { x } _ { t } - \gamma \mathbf { x } _ { t + 1 } \right) ^ { T } \right] \quad \text { and } \quad \mathbf { b } \doteq \mathbb { E } \left[ R _ { t + 1 } \mathbf { x } _ { t } \right]
+</script>
+&#x4F30;&#x8BA1;&#x503C;&#x5982;&#x4E0B;&#xFF1A;
+<script type="math/tex; mode=display">
+\hat { \mathbf { A } } _ { t } \doteq \sum _ { k = 0 } ^ { t - 1 } \mathbf { x } _ { k } \left( \mathbf { x } _ { k } - \gamma \mathbf { x } _ { k + 1 } \right) ^ { T } + \varepsilon \mathbf { I } \quad \text { and } \quad \hat { \mathbf { b } } _ { t } \doteq \sum _ { k = 0 } ^ { t - 1 } R _ { t + 1 } \mathbf { x } _ { k }
+</script>
+&#x5C06;&#x77E9;&#x9635;&#x7684;&#x9006;&#x6539;&#x5199;&#x4E3A;&#x9012;&#x5F52;&#x5F62;&#x5F0F;&#xFF1A;
+<script type="math/tex; mode=display">
+\left.\begin{aligned} \hat { \mathbf { A } } _ { t } ^ { - 1 } & = \left( \hat { \mathbf { A } } _ { t - 1 } + \mathbf { x } _ { t } \left( \mathbf { x } _ { t } - \gamma \mathbf { x } _ { t + 1 } \right) ^ { T } \right) ^ { - 1 } \\ & = \hat { \mathbf { A } } _ { t - 1 } ^ { - 1 } - \frac { \hat { \mathbf { A } } _ { t - 1 } ^ { - 1 } \mathbf { x } _ { t } \left( \mathbf { x } _ { t } - \gamma \mathbf { x } _ { t + 1 } \right) ^ { T } \hat { \mathbf { A } } _ { t - 1 } ^ { - 1 } } { 1 + \left( \mathbf { x } _ { t } - \gamma \mathbf { x } _ { t + 1 } \right) ^ { T } \hat { \mathbf { A } } _ { t - 1 } ^ { - 1 } \mathbf { x } _ { t } } \end{aligned} \right.
+</script>
+&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#xFF0C;LSTD&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x4E3A;o(d^2)&#xFF0C;&#x800C;semi-gradient&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x4E3A;o(d)&#x3002;LSTD&#x65B9;&#x6CD5;&#x4E0D;&#x9700;&#x8981;&#x8BBE;&#x7F6E;&#x6B65;&#x957F;&#xFF0C;&#x800C;&#x662F;&#x8BBE;&#x7F6E;$\epsilon$&#x53C2;&#x6570;&#xFF0C;&#x5982;&#x679C;$\epsilon$&#x8BBE;&#x7F6E;&#x8FC7;&#x5C0F;&#xFF0C;&#x5219;&#x9006;&#x77E9;&#x9635;&#x53EF;&#x80FD;&#x53D8;&#x5316;&#x5F88;&#x5927;&#xFF1B;&#x5982;&#x679C;&#x8BBE;&#x7F6E;&#x8FC7;&#x5927;&#xFF0C;&#x5219;&#x5B66;&#x4E60;&#x4F1A;&#x5341;&#x5206;&#x7F13;&#x6162;&#x3002;</p>
+<p><img src="../img/9-8-1.png" alt="img"></p>
+<h2 id="99-memory-based-function-approximation"><a name="99-memory-based-function-approximation" class="plugin-anchor" href="#99-memory-based-function-approximation"><i class="fa fa-link" aria-hidden="true"></i></a>9.9 Memory-based Function Approximation</h2>
+<p>&#x524D;&#x6587;&#x4E2D;&#x4E3B;&#x8981;&#x4ECB;&#x7ECD;&#x7684;&#x662F;&#x57FA;&#x4E8E;&#x53C2;&#x6570;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x6B64;&#x5916;&#xFF0C;&#x8FD8;&#x6709;&#x65E0;&#x53C2;&#x6570;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x4E00;&#x79CD;&#x4F8B;&#x5B50;&#x662F;&#x57FA;&#x4E8E;&#x5185;&#x5B58;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5373;&#x4FDD;&#x5B58;&#x6240;&#x6709;&#x7684;&#x8BAD;&#x7EC3;&#x6837;&#x672C;&#x5230;&#x5185;&#x5B58;&#x4E2D;&#xFF0C;&#x6BCF;&#x6B21;&#x9700;&#x8981;&#x67E5;&#x8BE2;&#x72B6;&#x6001;&#x65F6;&#x518D;&#x53BB;&#x8BA1;&#x7B97;&#x5BF9;&#x5E94;&#x4F30;&#x8BA1;&#x503C;&#xFF0C;&#x8FD9;&#x4E5F;&#x79F0;&#x4F5C;lazy learning&#x3002;</p>
+<p>&#x57FA;&#x4E8E;&#x5185;&#x5B58;&#x7684;&#x65B9;&#x6CD5;&#x4E0D;&#x4F9D;&#x8D56;&#x53C2;&#x6570;&#x9650;&#x5236;&#xFF0C;&#x76F4;&#x63A5;&#x7531;&#x6837;&#x4F8B;&#x51B3;&#x5B9A;&#x3002;&#x5305;&#x62EC;nearest neighbor method&#x3001;weighted average methods&#x3001;Locally weighted regression&#x3002;&#xFF08;&#x548C;k&#x8FD1;&#x90BB;&#x7C7B;&#x4F3C;&#xFF09;</p>
+<p>&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x4F7F;&#x7528;&#x8F68;&#x8FF9;&#x91C7;&#x6837;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x5168;&#x5C40;&#x51FD;&#x6570;&#x903C;&#x8FD1;&#xFF0C;&#x6545;&#x800C;&#x53EF;&#x4EE5;&#x89E3;&#x51B3;&#x7EF4;&#x5EA6;&#x56F0;&#x96BE;&#x95EE;&#x9898;&#x3002;&#x5728;&#x57FA;&#x4E8E;&#x8868;&#x683C;&#x65B9;&#x6CD5;&#x4E2D;&#xFF0C;k&#x4E2A;&#x72B6;&#x6001;&#x9700;&#x8981;k&#x7684;&#x6307;&#x6570;&#x7EA7;&#x5185;&#x5B58;&#x5B58;&#x50A8;&#xFF0C;&#x9677;&#x5165;&#x7EF4;&#x5EA6;&#x7206;&#x70B8;&#x3002;</p>
+<h2 id="910-kernel-based-function-approximation"><a name="910-kernel-based-function-approximation" class="plugin-anchor" href="#910-kernel-based-function-approximation"><i class="fa fa-link" aria-hidden="true"></i></a>9.10 Kernel-based Function Approximation</h2>
+<p> &#x5728;&#x4E0A;&#x4E00;&#x8282;&#x4E2D;&#xFF0C;&#x7ED9;&#x6BCF;&#x4E2A;&#x72B6;&#x6001;&#x8D4B;&#x4E88;&#x7684;&#x6743;&#x91CD;&#x79F0;&#x4E3A;&#x6838;&#x51FD;&#x6570;&#xFF0C;&#x5373;$k : S \times S \rightarrow \mathbb { R }$&#x3002;&#x6838;&#x51FD;&#x6570;&#x63CF;&#x8FF0;&#x4E86;&#x4E0D;&#x540C;&#x72B6;&#x6001;&#x4E4B;&#x95F4;&#x7684;&#x76F8;&#x4F3C;&#x5EA6;&#x3002;</p>
+<p>&#x6838;&#x51FD;&#x6570;&#x56DE;&#x5F52;&#x662F;&#x4E00;&#x79CD;&#x57FA;&#x4E8E;&#x5185;&#x5B58;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5BF9;&#x8BAD;&#x7EC3;&#x6837;&#x4F8B;&#x7684;&#x6240;&#x6709;&#x72B6;&#x6001;&#x52A0;&#x6743;&#x5E73;&#x5747;&#x3002;
+<script type="math/tex; mode=display">
+\hat { v } ( s , \mathcal { D } ) = \sum _ { s ^ { \prime } \in \mathcal { D } } k \left( s , s ^ { \prime } \right) g \left( s ^ { \prime } \right)
+</script>
+&#x5176;&#x4E2D;&#xFF0C;&#x6838;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x9009;&#x7528;&#x7EBF;&#x6027;&#x6838;&#x3001;RBF&#x6838;&#x7B49;&#x3002;</p>
+<p>&#x4F7F;&#x7528;&#x6838;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x8FBE;&#x5230;&#x5347;&#x7EF4;&#x7684;&#x6548;&#x679C;&#x3002;&#x4EE5;&#x7EBF;&#x6027;&#x65B9;&#x5F0F;&#x4E3A;&#x4F8B;&#xFF0C;&#x5982;&#x8BA1;&#x7B97;d&#x7EF4;&#x7279;&#x5F81;&#x5411;&#x91CF;&#x7684;&#x76F8;&#x4F3C;&#x5EA6;&#x65F6;&#xFF0C;&#x4F7F;&#x7528;&#x70B9;&#x4E58;&#x65B9;&#x5F0F;&#x8BA1;&#x7B97;&#xFF0C;&#x4E0E;&#x6838;&#x51FD;&#x6570;&#x5177;&#x6709;&#x76F8;&#x540C;&#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x4F46;&#x907F;&#x514D;&#x4E86;&#x5728;d&#x7EF4;&#x7A7A;&#x95F4;&#x8FDB;&#x884C;&#x590D;&#x6742;&#x8BA1;&#x7B97;&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;
+<script type="math/tex; mode=display">
+k \left( s , s ^ { \prime } \right) = \mathbf { x } ( s ) ^ { T } \mathbf { x } \left( s ^ { \prime } \right)
+</script>
+&#x8FD9;&#x4E5F;&#x79F0;&#x4F5C;&#x201D;&#x6838;&#x6280;&#x5DE7;&#x201C;&#xFF0C;&#x5141;&#x8BB8;&#x95F4;&#x63A5;&#x5728;&#x9AD8;&#x7EF4;&#x7A7A;&#x95F4;&#x8FDB;&#x884C;&#x8BA1;&#x7B97;&#x3002;</p>
+<h2 id="911-looking-deeper-at-on-policy-learning-interest-and-emphasis"><a name="911-looking-deeper-at-on-policy-learning-interest-and-emphasis" class="plugin-anchor" href="#911-looking-deeper-at-on-policy-learning-interest-and-emphasis"><i class="fa fa-link" aria-hidden="true"></i></a>9.11 Looking Deeper at On-policy Learning: Interest and Emphasis</h2>
+<p>&#x672C;&#x7AE0;&#x4E2D;&#x6240;&#x6709;&#x65B9;&#x6CD5;&#x5BF9;&#x5F85;&#x6240;&#x6709;&#x72B6;&#x6001;&#x90FD;&#x662F;&#x516C;&#x5E73;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x4F7F;&#x7528;&#x4E86;on-policy&#x5206;&#x5E03;&#x7B56;&#x7565;&#x3002;&#x4E00;&#x79CD;&#x65B0;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x4F7F;&#x7528;interest $I_t$&#x8868;&#x793A;&#x72B6;&#x6001;&#x7A7A;&#x95F4;&#x7684;&#x6743;&#x91CD;&#x5206;&#x5E03;&#xFF0C;&#x5373;&#x5BF9;&#x6BCF;&#x4E00;&#x4E2A;&#x72B6;&#x6001;&#x7684;&#x611F;&#x5174;&#x8DA3;&#x7A0B;&#x5EA6;&#xFF0C;&#x7528;&#x4E8E;&#x8BA1;&#x7B97;VE&#x635F;&#x5931;&#x51FD;&#x6570;&#x65F6;&#x7684;&#x72B6;&#x6001;&#x5206;&#x5E03;$\mu$&#x3002;&#x5B9A;&#x4E49;emphasis $M_t$&#xFF0C;&#x8868;&#x793A;&#x5F53;&#x524D;&#x66F4;&#x65B0;&#x7684;&#x91CD;&#x8981;&#x5EA6;&#x3002;&#x516C;&#x5F0F;&#x5982;&#x4E0B;&#xFF1A;
+<script type="math/tex; mode=display">
+\mathbf { w } _ { t + n } \doteq \mathbf { w } _ { t + n - 1 } + \alpha M _ { t } \left[ G _ { t : t + n } - \hat { v } \left( S _ { t } , \mathbf { w } _ { t + n - 1 } \right) \right] \nabla \hat { v } \left( S _ { t } , \mathbf { w } _ { t + n - 1 } \right)\\
+M _ { t } = I _ { t } + \gamma ^ { n } M _ { t - n } , \quad 0 \leq t < T
+</script></p>
+<h2 id="912-summary"><a name="912-summary" class="plugin-anchor" href="#912-summary"><i class="fa fa-link" aria-hidden="true"></i></a>9.12 Summary</h2>
+<p>&#x8FD9;&#x4E00;&#x7AE0;&#x4ECB;&#x7ECD;&#x4E86;&#x4E00;&#x4E9B;&#x6CDB;&#x5316;&#x7684;&#x51FD;&#x6570;&#x903C;&#x8FD1;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5927;&#x591A;&#x90FD;&#x662F;&#x4ECE;&#x76D1;&#x7763;&#x5B66;&#x4E60;&#x8FC1;&#x79FB;&#x800C;&#x6765;&#x3002;&#x603B;&#x4F53;&#x5305;&#x62EC;&#x4E24;&#x90E8;&#x5206;&#xFF1A;&#x57FA;&#x4E8E;&#x53C2;&#x6570;&#x7684;&#x548C;&#x65E0;&#x53C2;&#x6570;&#x7684;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x57FA;&#x4E8E;&#x53C2;&#x6570;&#x7684;&#x4F7F;&#x7528;SGD&#x5B66;&#x4E60;&#x6743;&#x91CD;&#x53C2;&#x6570;&#xFF0C;&#x6216;&#x8005;LSTD&#x76F4;&#x63A5;&#x8BA1;&#x7B97;&#x6743;&#x91CD;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+                <a href="chapter10.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Chapter 10: On-policy Control with Approximation">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Chapter 9: On-policy Prediction with Approximation","level":"1.3.1","depth":2,"next":{"title":"Chapter 10: On-policy Control with Approximation","level":"1.3.2","depth":2,"path":"chapter/chapter10.md","ref":"chapter/chapter10.md","articles":[]},"previous":{"title":"Part II","level":"1.3","depth":1,"ref":"","articles":[{"title":"Chapter 9: On-policy Prediction with Approximation","level":"1.3.1","depth":2,"path":"chapter/chapter9.md","ref":"chapter/chapter9.md","articles":[]},{"title":"Chapter 10: On-policy Control with Approximation","level":"1.3.2","depth":2,"path":"chapter/chapter10.md","ref":"chapter/chapter10.md","articles":[]},{"title":"Chapter 11: Oﬀ-policy Methods with Approximation","level":"1.3.3","depth":2,"ref":"","articles":[]},{"title":"Chapter 12: Eligibility Traces","level":"1.3.4","depth":2,"path":"chapter/chapter12.md","ref":"chapter/chapter12.md","articles":[]},{"title":"Chapter 13: Policy Gradient Methods","level":"1.3.5","depth":2,"path":"chapter/chapter13.md","ref":"chapter/chapter13.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["anchors","back-to-top-button","github","github-buttons","mathjax","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/laddie132"},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"github-buttons":{"repo":"laddie132/Reinforcement-Learning-Notes","types":["star","watch","fork"],"size":"small"},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Reinforcement Learning: An Introduction(2nd)","language":"zh-hans","gitbook":"*"},"file":{"path":"chapter/chapter9.md","mtime":"2018-09-19T06:33:13.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-10T10:13:19.489Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="https://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-mathjax/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

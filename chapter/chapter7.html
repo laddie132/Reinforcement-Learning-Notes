@@ -1,0 +1,612 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Chapter 7: n-step Bootstrapping · Reinforcement Learning: An Introduction(2nd)</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="chapter8.html" />
+    
+    
+    <link rel="prev" href="chapter6.html" />
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"repo":"laddie132/Reinforcement-Learning-Notes","types":["star","watch","fork"],"size":"small"};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    README
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    Part I
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" >
+            
+                <span>
+            
+                    
+                    Chapter 1: Introduction
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="chapter2.html">
+            
+                <a href="chapter2.html">
+            
+                    
+                    Chapter 2: Multi-armed Bandits
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="chapter3.html">
+            
+                <a href="chapter3.html">
+            
+                    
+                    Chapter 3: Finite Markov Decision Processes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="chapter4.html">
+            
+                <a href="chapter4.html">
+            
+                    
+                    Chapter 4: Dynamic Programming
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="chapter5.html">
+            
+                <a href="chapter5.html">
+            
+                    
+                    Chapter 5: Monte Carlo Methods
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="chapter6.html">
+            
+                <a href="chapter6.html">
+            
+                    
+                    Chapter 6: Temporal-Diﬀerence Learning
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.7" data-path="chapter7.html">
+            
+                <a href="chapter7.html">
+            
+                    
+                    Chapter 7: n-step Bootstrapping
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="chapter8.html">
+            
+                <a href="chapter8.html">
+            
+                    
+                    Chapter 8: Planning and Learning with Tabular Methods
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Part II
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="chapter9.html">
+            
+                <a href="chapter9.html">
+            
+                    
+                    Chapter 9: On-policy Prediction with Approximation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="chapter10.html">
+            
+                <a href="chapter10.html">
+            
+                    
+                    Chapter 10: On-policy Control with Approximation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" >
+            
+                <span>
+            
+                    
+                    Chapter 11: Oﬀ-policy Methods with Approximation
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="chapter12.html">
+            
+                <a href="chapter12.html">
+            
+                    
+                    Chapter 12: Eligibility Traces
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="chapter13.html">
+            
+                <a href="chapter13.html">
+            
+                    
+                    Chapter 13: Policy Gradient Methods
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    Part III
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="chapter14.html">
+            
+                <a href="chapter14.html">
+            
+                    
+                    Chapter 14: Psychology
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="chapter15.html">
+            
+                <a href="chapter15.html">
+            
+                    
+                    Chapter 15: Neuroscience
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" >
+            
+                <span>
+            
+                    
+                    Chapter 16: Applications and Case Studies
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Chapter 7: n-step Bootstrapping</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="chapter-7-n-step-bootstrapping"><a name="chapter-7-n-step-bootstrapping" class="plugin-anchor" href="#chapter-7-n-step-bootstrapping"><i class="fa fa-link" aria-hidden="true"></i></a>Chapter 7 n-step Bootstrapping</h1>
+<p>n&#x6B65;TD&#x65B9;&#x6CD5;&#x662F;&#x5BF9;MC&#x548C;&#x4E00;&#x6B65;TD&#x65B9;&#x6CD5;&#x7684;&#x878D;&#x5408;&#xFF0C;&#x4ECE;&#x800C;&#x5B9E;&#x73B0;&#x6BD4;MC&#x548C;&#x4E00;&#x6B65;TD&#x6548;&#x679C;&#x66F4;&#x597D;&#x7684;&#x65B9;&#x6CD5;&#x3002;</p>
+<h2 id="71-n-step-td-prediction"><a name="71-n-step-td-prediction" class="plugin-anchor" href="#71-n-step-td-prediction"><i class="fa fa-link" aria-hidden="true"></i></a>7.1 n-step TD Prediction</h2>
+<p>&#x5728;&#x4E00;&#x6B65;TD&#x66F4;&#x65B0;&#x4E2D;&#xFF0C;&#x5F53;&#x524D;&#x72B6;&#x6001;&#x503C;&#x51FD;&#x6570;&#x4F30;&#x8BA1;&#x503C;&#x53EA;&#x4F9D;&#x8D56;&#x4E0E;&#x5176;&#x540E;&#x7B2C;&#x4E00;&#x4E2A;&#x5956;&#x52B1;&#x548C;&#x4E0B;&#x4E00;&#x4E2A;&#x72B6;&#x6001;&#x503C;&#x51FD;&#x6570;&#x4F30;&#x8BA1;&#xFF1B;&#x800C;&#x4E8C;&#x6B65;&#x66F4;&#x65B0;&#x5219;&#x4F9D;&#x8D56;&#x4E8E;&#x5176;&#x540E;&#x4E24;&#x4E2A;&#x5956;&#x52B1;&#x548C;&#x4E4B;&#x540E;&#x7B2C;&#x4E8C;&#x4E2A;&#x72B6;&#x6001;&#x7684;&#x503C;&#x51FD;&#x6570;&#x4F30;&#x8BA1;&#xFF1B;&#x56E0;&#x6B64;&#xFF0C;&#x5BF9;n&#x6B65;&#x66F4;&#x65B0;&#x800C;&#x8A00;&#xFF0C;&#x66F4;&#x65B0;&#x6269;&#x5C55;&#x5230;n&#x6B65;&#x3002;</p>
+<p>&#x5BF9;MC&#x800C;&#x8A00;&#xFF0C;&#x4E00;&#x4E2A;&#x7247;&#x6BB5;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x4E3A;&#xFF1A;
+<script type="math/tex; mode=display">
+G _ { t } \doteq R _ { t + 1 } + \gamma R _ { t + 2 } + \gamma ^ { 2 } R _ { t + 3 } + \cdots + \gamma ^ { T - t - 1 } R _ { T }
+</script>
+&#x5BF9;&#x4E00;&#x6B65;TD&#x8FD4;&#x56DE;&#x503C;&#x4E3A;&#xFF1A;
+<script type="math/tex; mode=display">
+G _ { t : t + 1 } \doteq R _ { t + 1 } + \gamma V _ { t } \left( S _ { t + 1 } \right)
+</script>
+&#x5BF9;n&#x6B65;TD&#x8FD4;&#x56DE;&#x503C;&#x4E3A;&#xFF1A;
+<script type="math/tex; mode=display">
+G _ { t : t + n } \doteq R _ { t + 1 } + \gamma R _ { t + 2 } + \cdots + \gamma ^ { n - 1 } R _ { t + n } + \gamma ^ { n } V _ { t + n - 1 } \left( S _ { t + n } \right)
+</script>
+&#x8FD9;&#x6837;&#x4E00;&#x6765;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;n&#x6B65;TD&#x66F4;&#x65B0;&#x63A8;&#x8FDF;&#x4E86;n&#x4E2A;&#x65F6;&#x95F4;&#x6B65;&#xFF0C;&#x5219;&#x5BF9;&#x4E8E;t&#x5230;t+1&#x7684;MDP&#x8FC7;&#x7A0B;&#x800C;&#x8A00;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x66F4;&#x65B0;&#x7684;&#x6709;&#x6548;&#x65F6;&#x95F4;&#x6B65;&#x4E3A;t+n&#x3002;&#x5BF9;&#x4E8E;&#x66F4;&#x65B0;&#x516C;&#x5F0F;&#xFF0C;&#x8FD9;&#x91CC;&#x4ECD;&#x7136;&#x4F7F;&#x7528;2.4&#x8282;&#x4E2D;&#x7684;&#x589E;&#x91CF;&#x7B97;&#x6CD5;&#xFF0C;&#x5E76;&#x8BBE;&#x7F6E;&#x56FA;&#x5B9A;stepsize&#xFF0C;&#x5373;&#x6307;&#x6570;&#x52A0;&#x6743;&#x5E73;&#x5747;&#x7684;&#x65B9;&#x5F0F;&#xFF1A;
+<script type="math/tex; mode=display">
+V _ { t + n } \left( S _ { t } \right) \doteq V _ { t + n - 1 } \left( S _ { t } \right) + \alpha \left[ G _ { t : t + n } - V _ { t + n - 1 } \left( S _ { t } \right) \right]
+</script>
+&#x5176;&#x4E2D;&#xFF0C;&#x5176;&#x4ED6;&#x6240;&#x6709;&#x72B6;&#x6001;&#x503C;&#x4FDD;&#x6301;&#x4E0D;&#x53D8;&#x3002;</p>
+<p><img src="../img/7-1-1.png" alt="7-1-1"></p>
+<p>&#x5728;n&#x6B65;TD&#x66F4;&#x65B0;&#x4E2D;&#xFF0C;&#x5B58;&#x5728;&#x8BEF;&#x5DEE;&#x51CF;&#x5C0F;&#x7279;&#x6027;&#xFF08;error reduction property&#xFF09;&#xFF0C;&#x5373;n&#x6B65;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x671F;&#x671B;&#x76F8;&#x5BF9;&#x4E8E;&#x771F;&#x5B9E;&#x72B6;&#x6001;&#x503C;&#x51FD;&#x6570;&#x7684;&#x8BEF;&#x5DEE;&#xFF0C;&#x5C0F;&#x4E8E;&#x7B49;&#x4E8E;&#x4E0A;&#x4E00;&#x4E2A;&#x65F6;&#x95F4;&#x6B65;$V _ { t + n - 1 } ( s )$&#x7684;&#x8BEF;&#x5DEE;&#xFF0C;&#x5982;&#x4E0B;&#xFF1A;
+<script type="math/tex; mode=display">
+\max _ { s } \left| \mathbb { E } _ { \pi } \left[ G _ { t : t + n } | S _ { t } = s \right] - v _ { \pi } ( s ) \right| \leq \gamma ^ { n } \max _ { s } \left| V _ { t + n - 1 } ( s ) - v _ { \pi } ( s ) \right|
+</script>
+&#x8FD9;&#x6837;&#x4E00;&#x6765;&#xFF0C;&#x53EF;&#x4EE5;&#x4FDD;&#x8BC1;n&#x6B65;TD&#x66F4;&#x65B0;&#x6700;&#x7EC8;&#x4F1A;&#x6536;&#x655B;&#x5230;&#x771F;&#x5B9E;&#x9884;&#x6D4B;&#x503C;&#x3002;</p>
+<h2 id="72-n-step-sarsa"><a name="72-n-step-sarsa" class="plugin-anchor" href="#72-n-step-sarsa"><i class="fa fa-link" aria-hidden="true"></i></a>7.2 n-step Sarsa</h2>
+<p>&#x57FA;&#x4E8E;&#x52A8;&#x4F5C;&#x503C;&#x51FD;&#x6570;&#x786E;&#x5B9A;&#x63A7;&#x5236;&#x7B56;&#x7565;&#x66F4;&#x52A0;&#x76F4;&#x63A5;&#xFF0C;&#x6545;&#x800C;&#x52A8;&#x4F5C;&#x503C;&#x51FD;&#x6570;&#x66F4;&#x65B0;&#x516C;&#x5F0F;&#x5982;&#x4E0B;&#xFF1A;
+<script type="math/tex; mode=display">
+Q _ { t + n } \left( S _ { t } , A _ { t } \right) \doteq Q _ { t + n - 1 } \left( S _ { t } , A _ { t } \right) + \alpha \left[ G _ { t : t + n } - Q _ { t + n - 1 } \left( S _ { t } , A _ { t } \right) \right]
+</script>
+&#x5176;&#x4E2D;&#xFF0C;&#x8FD4;&#x56DE;&#x503C;&#x4E3A;&#xFF1A;
+<script type="math/tex; mode=display">
+G _ { t : t + n } \doteq R _ { t + 1 } + \gamma R _ { t + 2 } + \cdots + \gamma ^ { n - 1 } R _ { t + n } + \gamma ^ { n } Q _ { t + n - 1 } \left( S _ { t + n } , A _ { t + n } \right) , \quad n \geq 1,0 \leq t < T - n
+</script>
+<img src="../img/7-2-1.png" alt="7-2-1"></p>
+<p>&#x5B9E;&#x9A8C;&#x8BC1;&#x660E;&#xFF0C;&#x8FD9;&#x79CD;n&#x6B65;&#x66F4;&#x65B0;&#x65B9;&#x5F0F;&#x4F7F;&#x7528;&#x4E86;&#x66F4;&#x591A;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x4F30;&#x8BA1;&#x503C;&#x66F4;&#x52A0;&#x51C6;&#x786E;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x671F;&#x671B;Sarsa&#x7B97;&#x6CD5;&#x800C;&#x8A00;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x6539;&#x53D8;&#x8FD4;&#x56DE;&#x503C;&#x4E2D;&#x6240;&#x4F9D;&#x8D56;&#x7684;&#x52A8;&#x4F5C;&#x503C;&#x51FD;&#x6570;&#x4E3A;&#x52A8;&#x4F5C;&#x503C;&#x51FD;&#x6570;&#x7684;&#x671F;&#x671B;&#x5373;&#x53EF;&#xFF0C;&#x5982;&#x4E0B;&#xFF1A;
+<script type="math/tex; mode=display">
+\overline { V } _ { t } ( s ) \doteq \sum _ { a } \pi ( a | s ) Q _ { t } ( s , a ) , \quad \text { for all } s \in \delta
+</script></p>
+<h2 id="73-n-step-o&#xFB00;-policy-learning-by-importance-sampling"><a name="73-n-step-o&#xFB00;-policy-learning-by-importance-sampling" class="plugin-anchor" href="#73-n-step-o&#xFB00;-policy-learning-by-importance-sampling"><i class="fa fa-link" aria-hidden="true"></i></a>7.3 n-step O&#xFB00;-policy Learning by Importance Sampling</h2>
+<p>&#x5728;&#x79BB;&#x7EBF;&#x5B66;&#x4E60;&#x4E2D;&#xFF0C;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x76EE;&#x6807;&#x7B56;&#x7565;&#x548C;&#x884C;&#x4E3A;&#x7B56;&#x7565;&#xFF0C;&#x4F7F;&#x7528;&#x884C;&#x4E3A;&#x7B56;&#x7565;&#x4EA7;&#x751F;&#x4E00;&#x7CFB;&#x5217;&#x5956;&#x52B1;&#xFF0C;&#x5E76;&#x8BA1;&#x7B97;&#x8FD4;&#x56DE;&#x503C;&#x3002;&#x503C;&#x5F97;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x8FD9;&#x4E2A;&#x8FD4;&#x56DE;&#x503C;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x91CD;&#x8981;&#x6027;&#x91C7;&#x6837;&#x673A;&#x5236;&#x4FEE;&#x6B63;&#x4E3A;&#x76EE;&#x6807;&#x7B56;&#x7565;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;
+<script type="math/tex; mode=display">
+\rho _ { t : h } \doteq \prod _ { k = t } ^ { \min ( h , T - 1 ) } \frac { \pi \left( A _ { k } | S _ { k } \right) } { b \left( A _ { k } | S _ { k } \right) }
+</script>
+&#x56E0;&#x6B64;&#xFF0C;&#x66F4;&#x65B0;&#x516C;&#x5F0F;&#x4E3A;&#xFF1A;
+<script type="math/tex; mode=display">
+Q _ { t + n } \left( S _ { t } , A _ { t } \right) \doteq Q _ { t + n - 1 } \left( S _ { t } , A _ { t } \right) + \alpha \rho _ { t + 1 : t + n - 1 } \left[ G _ { t : t + n } - Q _ { t + n - 1 } \left( S _ { t } , A _ { t } \right) \right]
+</script>
+<img src="../img/7-3-1.png" alt="img"></p>
+<p>&#x5BF9;&#x4E8E;&#x671F;&#x671B;sarsa&#x800C;&#x8A00;&#xFF0C;&#x66FF;&#x6362;&#x91CD;&#x8981;&#x6027;&#x91C7;&#x6837;&#x4E2D;&#x7684;$\rho <em> { t + 1 : t + n - 1 }$&#x4E3A;$\rho </em> { t + 1 : t + n - 2 }$&#xFF0C;&#x8FD4;&#x56DE;&#x503C;&#x4F7F;&#x7528;&#x671F;&#x671B;Sarsa&#x7684;&#x5373;&#x53EF;&#x3002;</p>
+<h2 id="75-o&#xFB00;-policy-learning-without-importance-sampling-the-n-step-tree-backup-algorithm"><a name="75-o&#xFB00;-policy-learning-without-importance-sampling-the-n-step-tree-backup-algorithm" class="plugin-anchor" href="#75-o&#xFB00;-policy-learning-without-importance-sampling-the-n-step-tree-backup-algorithm"><i class="fa fa-link" aria-hidden="true"></i></a>7.5 O&#xFB00;-policy Learning Without Importance Sampling: The n-step Tree Backup Algorithm</h2>
+<p>&#x4E0D;&#x5E26;&#x91CD;&#x8981;&#x6027;&#x91C7;&#x6837;&#x7684;&#x79BB;&#x7EBF;&#x5B66;&#x4E60;&#xFF0C;&#x79F0;&#x4F5C;&#x6811;&#x56DE;&#x9000;&#x7B97;&#x6CD5;&#x3002;&#x5176;&#x5BF9;&#x4E8E;&#x6BCF;&#x4E00;&#x4E2A;&#x65F6;&#x95F4;&#x6B65;&#x7684;&#x6240;&#x6709;&#x52A8;&#x4F5C;&#x90FD;&#x8FDB;&#x884C;&#x7EDF;&#x8BA1;&#x8BA1;&#x7B97;&#xFF0C;&#x5E76;&#x5C55;&#x5F00;&#x4E3A;&#x4E00;&#x4E2A;&#x6811;&#x5F62;&#x56FE;&#x3002;&#x5176;&#x4E2D;&#xFF0C;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#x4E3A;&#x672A;&#x8BBF;&#x95EE;&#x8FC7;&#x7684;&#x52A8;&#x4F5C;&#xFF0C;&#x975E;&#x53F6;&#x5B50;&#x7ED3;&#x70B9;&#x4E3A;&#x5F53;&#x524D;&#x6267;&#x884C;&#x7684;&#x52A8;&#x4F5C;&#x3002;&#x6700;&#x7EC8;&#x7684;&#x76EE;&#x6807;&#x8FD4;&#x56DE;&#x503C;&#x5305;&#x62EC;&#x5B9E;&#x9645;&#x5956;&#x52B1;&#x548C;&#x6240;&#x6709;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#x7684;&#x503C;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x4E00;&#x6B65;&#x6811;&#x56DE;&#x9000;&#x7B97;&#x6CD5;&#x800C;&#x8A00;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;&#x671F;&#x671B;Sarsa&#x7B97;&#x6CD5;&#xFF0C;&#x5982;&#x4E0B;&#xFF1A;
+<script type="math/tex; mode=display">
+G _ { t : t + 1 } \doteq R _ { t + 1 } + \gamma \sum _ { a } \pi ( a | S _ { t + 1 } ) Q _ { t } \left( S _ { t + 1 } , a \right)
+</script>
+&#x5BF9;&#x4E8E;n&#x6B65;&#x6811;&#x56DE;&#x9000;&#x7B97;&#x6CD5;&#xFF0C;&#x66F4;&#x65B0;&#x5982;&#x4E0B;&#xFF1A;
+<script type="math/tex; mode=display">
+G _ { t : t + n } \doteq R _ { t + 1 } + \gamma \sum _ { a \neq A _ { t + 1 } } \pi ( a | S _ { t + 1 } ) Q _ { t + n - 1 } \left( S _ { t + 1 } , a \right) + \gamma \pi \left( A _ { t + 1 } | S _ { t + 1 } \right) G _ { t + 1 : t + n } , t < T - 1
+</script>
+&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684;&#x63A7;&#x5236;&#x7B97;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="../img/7-5-2.png" alt="img"></p>
+<h2 id="76-a-unifying-algorithm-n-step-q&#x3C3;"><a name="76-a-unifying-algorithm-n-step-q&#x3C3;" class="plugin-anchor" href="#76-a-unifying-algorithm-n-step-q&#x3C3;"><i class="fa fa-link" aria-hidden="true"></i></a>7.6 *A Unifying Algorithm: n-step Q(&#x3C3;)</h2>
+<p>&#x8FD9;&#x4E00;&#x8282;&#x8BD5;&#x56FE;&#x5BFB;&#x627E;&#x4E00;&#x79CD;&#x7EDF;&#x4E00;&#x7684;&#x8868;&#x793A;&#x65B9;&#x5F0F;&#xFF0C;&#x6765;&#x8868;&#x793A;n&#x6B65;Sarsa&#xFF0C;n&#x6B65;&#x671F;&#x671B;Sarsa&#xFF0C;n&#x6B65;&#x6811;&#x56DE;&#x9000;&#x7B97;&#x6CD5;&#x7B49;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x6BCF;&#x4E00;&#x6B65;&#x8BA1;&#x7B97;&#x4E00;&#x4E2A;&#x51FD;&#x6570;$Q(&#x3C3;)$&#xFF0C;&#x8BE5;&#x503C;&#x4E3A;1&#x8868;&#x793A;&#x53EA;&#x8BA1;&#x7B97;&#x91C7;&#x6837;&#x503C;&#xFF0C;&#x8BE5;&#x503C;&#x4E3A;0&#x8868;&#x793A;&#x8BA1;&#x7B97;&#x6240;&#x6709;&#x52A8;&#x4F5C;&#x7684;&#x5956;&#x52B1;&#x3002;&#x8FD9;&#x6837;&#x4E00;&#x6765;&#xFF0C;&#x66F4;&#x65B0;&#x516C;&#x5F0F;&#x5982;&#x4E0B;&#xFF1A;
+<script type="math/tex; mode=display">
+G _ { t : h } \doteq R _ { t + 1 } + \gamma \left( \sigma _ { t + 1 } \rho _ { t + 1 } + \left( 1 - \sigma _ { t + 1 } \right) \pi \left( A _ { t + 1 } | S _ { t + 1 } \right) \right) \left( G _ { t + 1 : h } - Q _ { h - 1 } \left( S _ { t + 1 } , A _ { t + 1 } \right) \right) + \gamma \overline { V } _ { h - 1 } \left( S _ { t + 1 } \right)
+</script>
+<img src="../img/7-6-1.png" alt="img"></p>
+<h2 id="77-summary"><a name="77-summary" class="plugin-anchor" href="#77-summary"><i class="fa fa-link" aria-hidden="true"></i></a>7.7 Summary</h2>
+<p>n&#x6B65;&#x81EA;&#x5F15;&#x5BFC;&#x65B9;&#x6CD5;&#x5305;&#x62EC;&#x5728;&#x7EBF;&#x7B56;&#x7565;&#x548C;&#x79BB;&#x7EBF;&#x7B56;&#x7565;&#xFF0C;&#x5176;&#x4E2D;&#xFF0C;&#x5728;&#x7EBF;&#x7B56;&#x7565;&#x4E3A;n&#x6B65;Sarsa&#x7B97;&#x6CD5;&#x3002;&#x79BB;&#x7EBF;&#x7B56;&#x7565;&#x5305;&#x62EC;&#x57FA;&#x4E8E;&#x91CD;&#x8981;&#x6027;&#x91C7;&#x6837;&#x7684;&#x548C;&#x57FA;&#x4E8E;&#x6811;&#x56DE;&#x9000;&#x66F4;&#x65B0;&#x7684;&#x3002;&#x5C06;&#x8FD9;&#x4E9B;&#x90FD;&#x53EF;&#x4EE5;&#x7EDF;&#x4E00;&#x8868;&#x793A;&#x4E3A;n&#x6B65;Q(&#x3C3;)&#x7B97;&#x6CD5;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="chapter6.html" class="navigation navigation-prev " aria-label="Previous page: Chapter 6: Temporal-Diﬀerence Learning">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="chapter8.html" class="navigation navigation-next " aria-label="Next page: Chapter 8: Planning and Learning with Tabular Methods">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Chapter 7: n-step Bootstrapping","level":"1.2.7","depth":2,"next":{"title":"Chapter 8: Planning and Learning with Tabular Methods","level":"1.2.8","depth":2,"path":"chapter/chapter8.md","ref":"chapter/chapter8.md","articles":[]},"previous":{"title":"Chapter 6: Temporal-Diﬀerence Learning","level":"1.2.6","depth":2,"path":"chapter/chapter6.md","ref":"chapter/chapter6.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","back-to-top-button","github","github-buttons","mathjax","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/laddie132"},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"github-buttons":{"repo":"laddie132/Reinforcement-Learning-Notes","types":["star","watch","fork"],"size":"small"},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Reinforcement Learning: An Introduction(2nd)","language":"zh-hans","gitbook":"*"},"file":{"path":"chapter/chapter7.md","mtime":"2018-09-19T06:33:13.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-10T10:13:19.489Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="https://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-mathjax/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
